@@ -15,6 +15,7 @@ public class Task {
     private Date startTime;
     private Date endTime;
     private String desc;
+    private Integer point;
     private TaskStrategy taskStrategy;
 
     public Integer getTaskId() {
@@ -55,5 +56,13 @@ public class Task {
 
     public void setTaskStrategy(TaskStrategy taskStrategy) {
         this.taskStrategy = taskStrategy;
+    }
+
+    public Integer getPoint() {
+        return point;
+    }
+
+    public void setPoint(Integer point) {
+        this.point = point;
     }
 }
