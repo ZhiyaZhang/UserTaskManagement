@@ -18,14 +18,15 @@ public class UserTask {
         actionRecords = new ArrayList<>();
     }
 
-    public boolean performTask(UserTaskAction userTaskAction){
+    public Integer performTask(UserTaskAction userTaskAction){
+        //执行任务返回积分；
         if(status == UserTaskStatus.FINISHED){
-            return false;
+            return 0;
         }
         Date actionTime = userTaskAction.getActionTime();
         if(actionTime.before(taskDefine.getStartTime())||actionTime.after(taskDefine.getEndTime())){
             status = UserTaskStatus.FINISHED;
-            return false;
+            return 0;
         }
         //处理任务
         strategy.handle(userTaskAction);
@@ -36,7 +37,7 @@ public class UserTask {
         }else {
             status = UserTaskStatus.ACTIVE;
         }
-        return true;
+        return taskDefine.getPoint();
     }
 
     public UserTaskStatus getStatus(Date date){
