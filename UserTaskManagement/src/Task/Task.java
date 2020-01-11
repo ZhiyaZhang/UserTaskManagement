@@ -1,68 +1,45 @@
 package Task;
 
-import java.util.Date;
+import java.util.Calendar;
 
-/**
- * @ClassName Task
- * @Description TODO
- * @Author dingying
- * @Date 2020/1/10 19:42
- * @ModifyDate 2020/1/10 19:42
- * @Version 1.0
- */
 public class Task {
-    private Integer taskId;
-    private Date startTime;
-    private Date endTime;
-    private String desc;
-    private Integer point;
-    private TaskStrategy taskStrategy;
+    private int point;
+    private int taskId;
+    private String description;
+    private TaskStatus taskStatus;
 
-    public Integer getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskId(Integer taskId) {
-        this.taskId = taskId;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public TaskStrategy getTaskStrategy() {
-        return taskStrategy;
-    }
-
-    public void setTaskStrategy(TaskStrategy taskStrategy) {
-        this.taskStrategy = taskStrategy;
-    }
-
-    public Integer getPoint() {
-        return point;
-    }
-
-    public void setPoint(Integer point) {
+    public Task(){}
+    public Task(int point, String des){
+        taskStatus = TaskStatus.OPEN;
         this.point = point;
+        this.description = des;
+        Calendar now = Calendar.getInstance();
+        String currentTime = now.get(Calendar.YEAR)+""+now.get(Calendar.MONTH)+now.get(Calendar.DAY_OF_MONTH)+now.get(Calendar.HOUR_OF_DAY) +now.get(Calendar.MINUTE) + now.get(Calendar.SECOND);
+        taskId = Integer.parseInt(currentTime);
+ //       this.taskStrategy = taskStrategy;
+    }
+
+
+    public TaskStatus getTaskStatus(){
+        return  taskStatus;
+    }
+    public void setTaskStatus(TaskStatus taskStatus){
+        this.taskStatus = taskStatus;
+    }
+
+    public void setPoint(int point){
+        this.point = point;
+    }
+
+    public int getPoint(){
+        return  point;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public void setDescription(String des){
+        this.description = des;
     }
 }
